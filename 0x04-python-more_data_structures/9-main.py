@@ -8,16 +8,3 @@ new_dict = multiply_by_2(a_dictionary)
 print_sorted_dictionary(a_dictionary)
 print("--")
 print_sorted_dictionary(new_dict)
-
-guillaume@ubuntu:~/0x04$ ./9-main.py
-Alex: 8
-Bob: 14
-John: 12
-Mike: 14
-Molly: 16
---
-Alex: 16
-Bob: 28
-John: 24
-Mike: 28
-Molly: 32
