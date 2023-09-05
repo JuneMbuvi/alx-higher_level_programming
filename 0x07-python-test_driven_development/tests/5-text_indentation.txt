@@ -1,0 +1,104 @@
+Text indentation
+
+‘def text_indentation(text)’ prints a text with 2 new lines after each of these characters: ., ? and :. Text is the content to be input.
+
+Usage
+=====
+def text_indentation(text)’ prints a text with 2 new lines after each of these characters: ., ? and :. Text is the content to be input.
+
+	>>>text_indentation == __import__(‘5-text_indentation’).text_indentation
+
+Valid text
+==========
+Valid text should contain a string otherwise a TypError is raised.
+::
+	>>>text_indentation(“hi.”)
+	hi.
+	<BLANKLINE>
+
+::
+	>>>text_indentation(“good morning”)
+	Good morning.
+	<BLANKLINE>
+
+There are no spaces at the beginning or end of the file.
+
+::
+	>>>text_indentation(“ good morning.”)
+	Good morning.
+	<BLANKLINE>
+
+::
+
+	>>>text_indentation(“good morning. ”)
+	Good morning.
+	<BLANKLINE>
+
+::
+	>>>text_indentation(“good morning. How are you? ”)
+	Good morning.
+	<BLANKLINE>
+	How are you?
+	<BLANKLINE>
+
+New lines are only printed after ., ? and : characters
+::
+	>>>text_indentation(“good morning, the sun’s out”)
+	good morning, the sun’s out
+
+New lines between strings are treated as usual.
+::
+	>>>text_indentation(“good morning./nThe sun’s out.”)
+	good morning.
+	<BLANKLINE>
+	<BLANKLINE>
+	The sun’s out.
+	<BLANKLINE>
+
+::
+
+	>>>text_indentation(“Lorem ipsum dolor sit amet, consectetur”
+	...”adipiscing elit. Quonam modo? Utrum igitur tibi litteram”
+	...”videor an totas paginas commovere? Non autem hoc: igitur ne””
+	...”illud quidem. Fortasse id optimum, sed ubi illud: Plus semper”
+	...”voluptatis? Teneo, inquit, finem illi videri nihil dolere. Transfer"
+	..."idem ad modestiam vel temperantiam, quae est moderatio”
+	..."cupiditatum rationi oboediens. Si id dicis,vicimus. Inde"
+	..."sermone vario sex illa a Dipylo stadia confecimus. Sin aliud"
+	..."quid voles, postea. Quae animi affectio suum cuique tribuens"
+	..."atque hanc, quam dico. Utinam quidem dicerent alium alio"
+	..."beatiorem! Iam ruinas videres”)doctest: +NORMALIZE WHITESPACE
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+	<BLANKLINE>
+	Quonam modo?
+	<BLANKLINE>
+	Utrum igitur tibi litteram videor an totas paginas commovere?
+	<BLANKLINE>
+	Non autem hoc:
+	<BLANKLINE>
+	igitur ne illud quidem. Fortasse id optimum, sed ubi illud:
+	<BLANKLINE>
+	Plus semper voluptatis?
+	<BLANKLINE>
+	Teneo, inquit, finem illi videri nihil dolere.
+	<BLANKLINE>
+	Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens.
+	<BLANKLINE>
+	Si id dicis, vicimus. Inde sermone vario sex illa a Dipylo stadia confecimus.
+	<BLANKLINE>
+	Sin aliud quid voles, postea. Quae animi affectio suum cuique tribuens atque hanc, quam dico.
+	<BLANKLINE>
+	Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres
+
+Invalid Text
+=============
+If text is not a string, a TypeError is raised.
+::
+	>>>text_indentation(15)
+	Traceback (most recent call last):
+	TypeError: text must be a string
+Text also has to be provided.
+::
+	>>>text_indentation()
+	Traceback (most recent call last):
+	TypeError: text_indentation missing 1 positional argument: text
