@@ -115,6 +115,7 @@ If infinity is provided as an argument, the function fails
         OverflowError: cannot convert float infinity to integer
 
 The function also fails when used with NaN
+
 ::
 	>>> add_integer(float('nan'))
 	Traceback (most recent call last):
