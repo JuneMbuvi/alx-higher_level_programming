@@ -41,5 +41,5 @@ class Rectangle:
     """defining public instance, perimeter"""
     def perimeter(self):
         if self.__width == 0 or self.__height == 0:
-            return (0)
+            perimeter = 0
         return (2 * (self.__width + self.__height))
