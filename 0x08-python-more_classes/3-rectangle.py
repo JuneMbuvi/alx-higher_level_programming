@@ -41,5 +41,18 @@ class Rectangle:
     """defining public instance, perimeter"""
     def perimeter(self):
         if self.__width == 0 or self.__height == 0:
-            perimeter = 0
+            return (0)
         return (2 * (self.__width + self.__height))
+
+    """defining the __str__ method"""
+    def __str__(self):
+        if self.__width == 0 or self.__height == 0:
+            return ("")
+
+        """creating a list to store the #"""
+        rect = []
+        for i in range(self.__height):
+            [rect.append("#") for j in range(self.__width)]
+            if i != self.__height - 1:
+                rect.append("\n")
+        return ("".join(rect))
