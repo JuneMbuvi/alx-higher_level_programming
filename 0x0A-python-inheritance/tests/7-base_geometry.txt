@@ -1,0 +1,36 @@
+#. 7-base_geometry.py
+=====================
+
+How to use 7-base_geometry.py
+============================
+This module defines a class ``BaseGeometry`` with several public instances
+
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Invalid
+=======
+When trying to compute area with no values an exception is raised.
+
+	>>> bg = BaseGeometry()
+	>>> bg.area()
+	Traceback: (most recent call last):
+	Exception: area() is not implemented
+
+A TypeError raised when using non-strings for name/non-integers for value
+
+	>>> bg = BaseGeometry()
+        >>> bg.integer_validator("hi", "two")
+        Traceback: (most recent call last):
+        TypeError: <name> must be an integer
+
+A ValueError is raised when value is <= 0
+
+	>>> bg = BaseGeometry()
+        >>> bg.integer_validator("hi", 0)
+        Traceback: (most recent call last):
+        ValueError: <name> must be greater than 0
+
+	>>> bg = BaseGeometry()
+        >>> bg.integer_validator("hi", -4)
+        Traceback: (most recent call last):
+        ValueError: <name> must be greater than 0
