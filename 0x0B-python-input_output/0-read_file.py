@@ -7,4 +7,4 @@ def read_file(filename=""):
     we don't have to pass a mode since its default is read"""
     with open(filename, encoding="utf-8") as f:
         is_read = f.read()
-        print(is_read)
+        print(is_read, end="")
