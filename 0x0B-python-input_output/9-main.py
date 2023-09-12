@@ -10,15 +10,3 @@ for student in students:
     print(type(j_student['first_name']))
     print(j_student['age'])
     print(type(j_student['age']))
-
-guillaume@ubuntu:~/0x0B$ ./9-main.py 
-<class 'dict'>
-John
-<class 'str'>
-23
-<class 'int'>
-<class 'dict'>
-Bob
-<class 'str'>
-27
-<class 'int'>
