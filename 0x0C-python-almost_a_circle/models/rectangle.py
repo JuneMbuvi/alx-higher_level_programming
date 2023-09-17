@@ -16,12 +16,16 @@ class Rectangle(Base):
     """use getters & setters to access and set values of the attributes
     start with width"""
     @property
-    def width(self):
+    def width(self, value):
         return (self.__width)
 
     @width.setter
-    def setWidth(self):
-        self.__width = width
+    def width(self, value):
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        elif value < 0:
+            raise ValueError("width must be > 0")
+        self.__width = value
 
     """get and set value for height"""
     @property
@@ -29,8 +33,12 @@ class Rectangle(Base):
         return (self.__height)
 
     @height.setter
-    def setHeight(self):
-        self.__height = height
+    def height(self, value):
+        if not isinstance(value, int):
+            raise TypeError("height must be an integer")
+        elif value < 0:
+            raise ValueError("height must be > 0")
+        self.__height = value
 
     """set and get value for x"""
     @property
@@ -38,8 +46,12 @@ class Rectangle(Base):
         return (self.__x)
 
     @x.setter
-    def x(self):
-        self.__x = x
+    def x(self, value):
+        if not isinstance(value, int):
+            raise TypeError("x must be an integer")
+        elif value < 0:
+            raise ValueError("x must be >= 0")
+        self.__x = value
 
     """set and get value for y"""
     @property
@@ -48,4 +60,8 @@ class Rectangle(Base):
 
     @y.setter
     def y(self):
-        self.__y = y
+        if not isinstance(value, int):
+            raise TypeError("y must be an integer")
+        elif value < 0:
+            raise ValueError("y must be >= 0")
+        self.__y = value

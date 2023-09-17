@@ -5,7 +5,7 @@ from models.rectangle import Rectangle
 
 
 class testRectangleClass(unittest.TestCase):
-    """test the id of a rectangle"""
+    """test whether the rectangle is an instance of the Base class"""
     def test_rect_instances(self):
         r1 = Rectangle(10, 2)
         self.assertIsInstance(Rectangle(10, 2), Base)
@@ -13,6 +13,10 @@ class testRectangleClass(unittest.TestCase):
         self.assertIsInstance(Rectangle(2, 10), Base)
         r3 = Rectangle(10, 2, 0, 0, 12)
         self.assertIsInstance(Rectangle(10, 2, 0, 0, 12), Base)
+
+    """test for type & value errors in the attributes"""
+    def test_for_errors(self):
+        self.assertRaises(Exception)
 
 if __name__ == "__main__":
     unittest.main()
