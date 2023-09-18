@@ -16,6 +16,10 @@ class testClassSquare(unittest.TestCase):
         s3 = Square(3, 1, 3)
         self.assertEqual(s3.area(), 9)
 
+    """test for type & value errors in the attributes"""
+    def test_for_sqerrors(self):
+        self.assertRaises(Exception)
+
 class testStdout(unittest.TestCase):
     """test that actual output is equal to actual"""
 
@@ -49,9 +53,40 @@ class testStdout(unittest.TestCase):
         correct = "[Square] (1) 0/0 - 5\n".format(s1.id)
         s2 = Square(2, 2)
         capture = testStdout.capture_output(s2, "print")
-        correct = "[Square] (30) 2/0 - 2\n".format(s2.id)
+        correct = "[Square] (31) 2/0 - 2\n".format(s2.id)
         self.assertEqual(correct, capture.getvalue())
         s3 = Square(3, 1, 3)
         capture = testStdout.capture_output(s3, "print")
-        correct = "[Square] (31) 1/3 - 3\n".format(s3.id)
+        correct = "[Square] (32) 1/3 - 3\n".format(s3.id)
         self.assertEqual(correct, capture.getvalue())
+
+    """test for updated arguments"""
+    def test_updates(self):
+        s1 = Square(5)
+        capture = testStdout.capture_output(s1, "print")
+        correct = "[Square] (33) 0/0 - 5\n".format(s1.id)
+        self.assertEqual(correct, capture.getvalue())
+        s1.update(10)
+        self.assertEqual("[Square] (10) 0/0 - 5", str(s1))
+        s1.update(1, 2)
+        self.assertEqual("[Square] (1) 0/0 - 2", str(s1))
+        s1.update(1, 2, 3)
+        self.assertEqual("[Square] (1) 3/0 - 2", str(s1))
+        s1.update(1, 2, 3, 4)
+        self.assertEqual("[Square] (1) 3/0 - 2", str(s1))
+
+    """test for kwargs"""
+    def test_kwargs(self):
+        s1 = Square(5)
+        capture = testStdout.capture_output(s1, "print")
+        correct = "[Square] (29) 0/0 - 5\n".format(s1.id)
+        self.assertEqual(correct, capture.getvalue())
+        s1.update(x=12)
+        self.assertEqual("[Square] (29) 12/0 - 5", str(s1))
+        s1.update(size=7, y=1)
+        self.assertEqual("[Square] (29) 12/0 - 7", str(s1))
+        s1.update(size=7, id=89, y=1)
+        self.assertEqual("[Square] (89) 12/0 - 7", str(s1))
+
+if __name__ == "__main__":
+    unittest.main()
