@@ -16,7 +16,7 @@ class Rectangle(Base):
     """use getters & setters to access and set values of the attributes
     start with width"""
     @property
-    def width(self, value):
+    def width(self):
         return (self.__width)
 
     @width.setter
