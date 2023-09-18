@@ -70,3 +70,21 @@ class Rectangle(Base):
     def area(self):
         """returns area of rectangle"""
         return (self.__width * self.__height)
+
+    """public instance display that displays the #"""
+    def display(self):
+        rect = []
+        for i in range(self.__height):
+            [rect.append("#") for j in range(self.__width)]
+            """if the last column is not reached, go to the next line/column"""
+            if i != self.__height - 1:
+                rect.append("\n")
+        print("".join(rect))
+
+    """override the __str__ method"""
+    def __str__(self):
+        string = "[" + str(self.__class__.__name__) + "] "
+        string += "(" + str(self.id) + ") "
+        string += str(self.__x) + "/" + str(self.__y)
+        string += " - " + str(self.__width) + "/" + str(self.__height)
+        return (string)
