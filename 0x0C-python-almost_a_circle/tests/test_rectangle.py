@@ -62,5 +62,14 @@ class testStdout(unittest.TestCase):
         correct = "[Rectangle] (12) 2/1 - 4/6\n".format(r2.id)
         self.assertEqual(correct, capture.getvalue())
 
+    """test display with x and y included"""
+    def test_dislayOne(self):
+        r1 = Rectangle(2, 3, 2, 2)
+        capture = testStdout.capture_output(r1, "display")
+        self.assertEqual("\n\n  ##\n  ##\n  ##\n", capture.getvalue())
+        r2 = Rectangle(3, 2, 1, 0)
+        capture = testStdout.capture_output(r2, "display")
+        self.assertEqual(" ###\n ###\n", capture.getvalue())
+
 if __name__ == "__main__":
     unittest.main()

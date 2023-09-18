@@ -73,13 +73,19 @@ class Rectangle(Base):
 
     """public instance display that displays the #"""
     def display(self):
-        rect = []
+        if self.__width == 0 or self.__height == 0:
+            print("")
+            return
+
+        [print("") for y in range(self.__y)]
         for i in range(self.__height):
-            [rect.append("#") for j in range(self.__width)]
-            """if the last column is not reached, go to the next line/column"""
+            [print(" ", end="") for x in range(self.__x)]
+            [print("#", end="") for j in range(self.__width)]
+            print("")
+            """if the last column is not reached, go to the next line/column
             if i != self.__height - 1:
                 rect.append("\n")
-        print("".join(rect))
+        print("".join(rect))"""
 
     """override the __str__ method"""
     def __str__(self):
