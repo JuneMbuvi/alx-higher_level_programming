@@ -96,7 +96,7 @@ class Rectangle(Base):
         return (string)
 
     """assigning argument to te attributes"""
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         if args and len(args) != 0:
             count = 0
             for arg in args:
@@ -115,3 +115,20 @@ class Rectangle(Base):
                 elif count == 4:
                     self.__y = arg
                 count += 1
+
+        """if args doesn't exist/ is empty, skip to **kwargs"""
+        for key, value in kwargs.items():
+            if key == "id":
+                if value is None:
+                    self.__init__(self.__width, self.__height,
+                                  self.__x, self.__y)
+                else:
+                    self.id = value
+            elif key == "width":
+                self.__width = value
+            elif key == "height":
+                self.__height = value
+            elif key == "x":
+                self.__x = value
+            elif key == "y":
+                self.__y = value
