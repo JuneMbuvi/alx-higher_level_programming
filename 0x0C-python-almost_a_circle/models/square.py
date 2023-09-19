@@ -4,7 +4,9 @@ from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    """constructor method"""
+    """constructor method
+    Args
+    Rectangle - super/parent class of Square"""
     def __init__(self, size, x=0, y=0, id=None):
         """inherit attributes from the super or Rectangle class"""
         super().__init__(size, size, x, y, id)
@@ -12,15 +14,23 @@ class Square(Rectangle):
     """public getter & setter size"""
     @property
     def size(self):
+        """returns the size of square as either
+        width/ height since size=width=height"""
         return (self.width)
 
     @size.setter
     def size(self, value):
+        """sets the size of square by equating it to
+        its corresponding value
+        Args
+        value - value of Square"""
         self.width = value
         self.height = value
 
     """define the square's string representation"""
     def __str__(self):
+        """returns the string representation of Square
+        and its attributes"""
         string = "[" + str(self.__class__.__name__) + "] "
         string += "(" + str(self.id) + ") "
         string += str(self.x) + "/" + str(self.y)
@@ -29,6 +39,12 @@ class Square(Rectangle):
 
     """update with args and kwargs"""
     def update(self, *args, **kwargs):
+        """updates the square by setting arguments or key/value
+        pairs to its attributes
+        Args
+        args - arguments
+        kwargs - keyword arguments which are used only in the absence of
+        args/ if args is empty"""
         if args and len(args) != 0:
             count = 0
             for arg in args:
@@ -63,6 +79,7 @@ class Square(Rectangle):
 
     """define the dictionary representation of Square"""
     def to_dictionary(self):
+        """returns the dictionary representation of the Square"""
         return {
                 "id": self.id,
                 "size": self.size,
