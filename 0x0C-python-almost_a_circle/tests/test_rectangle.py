@@ -56,7 +56,7 @@ class testStdout(unittest.TestCase):
     def test_str(self):
         r1 = Rectangle(4, 6, 2, 1, 12)
         capture = testStdout.capture_output(r1, "print")
-        correct = "[Rectangle] (12) 2/1 - 4/6\n".format(r1.id)
+        correct = "[Rectangle] (23) 2/1 - 4/6\n".format(r1.id)
         r2 = Rectangle(5, 5, 1)
         capture = testStdout.capture_output(r1, "print")
         correct = "[Rectangle] (12) 2/1 - 4/6\n".format(r2.id)
@@ -64,7 +64,6 @@ class testStdout(unittest.TestCase):
         r1 = Rectangle(10, 2, 1, 9)
         capture = testStdout.capture_output(r1, "print")
         correct = "[Rectangle] (1) 1/9 - 10/2\n".format(r1.id)
-
 
     """test display with x and y included"""
     def test_dislayOne(self):
@@ -79,7 +78,7 @@ class testStdout(unittest.TestCase):
     def test_updates(self):
         r1 = Rectangle(10, 10, 10, 10)
         capture = testStdout.capture_output(r1, "print")
-        correct = "[Rectangle] (18) 10/10 - 10/10\n".format(r1.id)
+        correct = "[Rectangle] (19) 10/10 - 10/10\n".format(r1.id)
         self.assertEqual(correct, capture.getvalue())
         r1 = Rectangle(10, 10, 10, 10)
         r1.update(89)
@@ -103,9 +102,9 @@ class testStdout(unittest.TestCase):
         capture = testStdout.capture_output(r1, "print")
         correct = "[Rectangle] (1) 10/10 - 10/10\n".format(r1.id)
         r1.update(height=1)
-        self.assertEqual("[Rectangle] (15) 10/10 - 10/1", str(r1))
+        self.assertEqual("[Rectangle] (16) 10/10 - 10/1", str(r1))
         r1.update(width=1, x=2)
-        self.assertEqual("[Rectangle] (15) 2/10 - 1/1", str(r1))
+        self.assertEqual("[Rectangle] (16) 2/10 - 1/1", str(r1))
         r1.update(y=1, width=2, x=3, id=89)
         self.assertEqual("[Rectangle] (89) 3/1 - 2/1", str(r1))
         r1.update(x=1, height=2, y=3, width=4)
