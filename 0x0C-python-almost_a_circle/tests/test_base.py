@@ -27,5 +27,13 @@ class Test_to_json_string(unittest.TestCase):
         r = Rectangle(10, 7, 2, 8)
         self.assertEqual(str, type(Base.to_json_string([r.to_dictionary()])))
 
+class testSaveToFile(unittest.TestCase):
+    """tests the instances saved in a file"""
+    def test_save_to_file(self):
+        r = Rectangle(10, 7, 2, 8)
+        Rectangle.save_to_file([r])
+        with open("Rectangle.json", "r") as f:
+            self.assertTrue(len(f.read() == 53))
+
 if __name__ == "__main__":
     unittest.main()
