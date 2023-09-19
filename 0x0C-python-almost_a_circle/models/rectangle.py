@@ -4,7 +4,9 @@ from models.base import Base
 
 
 class Rectangle(Base):
-    """constructor method"""
+    """constructor method to instatntiate the Rectangle
+    Args
+    Base - super/parent class"""
     def __init__(self, width, height, x=0, y=0, id=None):
         self.__width = width
         self.__height = height
@@ -17,10 +19,15 @@ class Rectangle(Base):
     start with width"""
     @property
     def width(self):
+        """returns the width of the rectangle"""
         return (self.__width)
 
     @width.setter
     def width(self, value):
+        """sets width of the Rectangle and equates it to value.
+        Also validates attributes for correct Type and value
+        Arg
+        value - value of width"""
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
         elif value < 0:
@@ -30,10 +37,15 @@ class Rectangle(Base):
     """get and set value for height"""
     @property
     def height(self):
+        """returns height value"""
         return (self.__height)
 
     @height.setter
     def height(self, value):
+        """sets height of the Rectangle and equates it to value.
+        Also validates attributes for correct Type and value
+        Arg
+        value - value of height"""
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         elif value < 0:
@@ -43,10 +55,15 @@ class Rectangle(Base):
     """set and get value for x"""
     @property
     def x(self):
+        """returns x"""
         return (self.__x)
 
     @x.setter
     def x(self, value):
+        """sets the x value of the Rectangle and equates it to value.
+        Also validates attributes for correct Type and value
+        Arg
+        value - value of x"""
         if not isinstance(value, int):
             raise TypeError("x must be an integer")
         elif value < 0:
@@ -56,10 +73,15 @@ class Rectangle(Base):
     """set and get value for y"""
     @property
     def y(self):
+        """returns y"""
         return (self.__y)
 
     @y.setter
     def y(self):
+        """sets the x value of the Rectangle and equates it to value.
+        Also validates attributes for correct Type and value
+        Arg
+        value - value of y"""
         if not isinstance(value, int):
             raise TypeError("y must be an integer")
         elif value < 0:
@@ -73,6 +95,8 @@ class Rectangle(Base):
 
     """public instance display that displays the #"""
     def display(self):
+        """prints in stdout the Rectangle in # and
+        prints an empty string if width or height is 0"""
         if self.__width == 0 or self.__height == 0:
             print("")
             return
@@ -89,6 +113,8 @@ class Rectangle(Base):
 
     """override the __str__ method"""
     def __str__(self):
+        """returns the string representation of Rectangle with its
+        atributes"""
         string = "[" + str(self.__class__.__name__) + "] "
         string += "(" + str(self.id) + ") "
         string += str(self.__x) + "/" + str(self.__y)
@@ -97,6 +123,11 @@ class Rectangle(Base):
 
     """assigning argument to te attributes"""
     def update(self, *args, **kwargs):
+        """assigns arguments or key/value pairs to each attributes
+        Args
+        args - arguments.
+        kwargs - keyword arguments that are used in the absence of
+        arguments or in case of an empty class"""
         if args and len(args) != 0:
             count = 0
             for arg in args:
@@ -135,7 +166,8 @@ class Rectangle(Base):
 
     """dictionary representation"""
     def to_dictionary(self):
-        """translates the attributes to a dictionary"""
+        """translates the attributes to a dictionary representation
+        of themselves"""
         return {
                 "id": self.id,
                 "width": self.__width,
