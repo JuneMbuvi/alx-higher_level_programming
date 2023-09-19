@@ -61,6 +61,10 @@ class testStdout(unittest.TestCase):
         capture = testStdout.capture_output(r1, "print")
         correct = "[Rectangle] (12) 2/1 - 4/6\n".format(r2.id)
         self.assertEqual(correct, capture.getvalue())
+        r1 = Rectangle(10, 2, 1, 9)
+        capture = testStdout.capture_output(r1, "print")
+        correct = "[Rectangle] (1) 1/9 - 10/2\n".format(r1.id)
+
 
     """test display with x and y included"""
     def test_dislayOne(self):
@@ -75,7 +79,7 @@ class testStdout(unittest.TestCase):
     def test_updates(self):
         r1 = Rectangle(10, 10, 10, 10)
         capture = testStdout.capture_output(r1, "print")
-        correct = "[Rectangle] (17) 10/10 - 10/10\n".format(r1.id)
+        correct = "[Rectangle] (18) 10/10 - 10/10\n".format(r1.id)
         self.assertEqual(correct, capture.getvalue())
         r1 = Rectangle(10, 10, 10, 10)
         r1.update(89)
@@ -106,6 +110,26 @@ class testStdout(unittest.TestCase):
         self.assertEqual("[Rectangle] (89) 3/1 - 2/1", str(r1))
         r1.update(x=1, height=2, y=3, width=4)
         self.assertEqual("[Rectangle] (89) 1/3 - 4/2", str(r1))
+
+class testDictionary:
+    """tests the dictionary representation of the Rectangle"""
+    def test_dictionary(self):
+        r1 = Rectangle(10, 2, 1, 9)
+        correct = {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10}
+        self.assertDictEqual(correct, r1.to_dicionary)
+
+    """test for rectangle that fails to convert to dictionary representation"""
+    def test_dictWithNoChange(self):
+        r1 = (10, 2, 1, 9)
+        r2 = Rectangle(1, 1)
+        r2.update(**r1_dictionary())
+        self.assertNotEqual(r1, r2)
+
+    """testing the args in the dictionary"""
+    def test_dictArg(self):
+        r1 = (10, 2, 1, 9)
+        with self.assertRaises(TypeError):
+            r.to_dictionary(1)
 
 if __name__ == "__main__":
     unittest.main()

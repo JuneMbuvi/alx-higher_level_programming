@@ -132,3 +132,14 @@ class Rectangle(Base):
                 self.__x = value
             elif key == "y":
                 self.__y = value
+
+    """dictionary representation"""
+    def to_dictionary(self):
+        """translates the attributes to a dictionary"""
+        return {
+                "id": self.id,
+                "width": self.__width,
+                "height": self.__height,
+                "x": self.__x,
+                "y": self.__y
+                }
