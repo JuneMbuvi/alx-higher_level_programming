@@ -45,3 +45,14 @@ class Base:
             else:
                 my_list = [m.to_dictionary for m in list_objs]
                 jsonfile.write(Base.to_json_string(my_list))
+
+    """define static method that returns list of JSON representation
+    of json_string"""
+    @staticmethod
+    def from_json_string(json_string):
+        """returns list of json representation
+        Args
+        json_string - string representing a list of dictionaries"""
+        if json_string is None or json_string == '[]':
+            return ([])
+        return (json.loads(json_string))
