@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """creates a class Base"""
 import json
-
+import csv
 
 class Base:
     """create class attribute(s) that increments everytime
@@ -36,8 +36,7 @@ class Base:
     def save_to_file(cls, list_objs):
         """"returns the json repreentation of list_objs
         Args
-        list_objs - list of instances who inherits of Base
-        cls - class decorator"""
+        list_objs - list of instances who inherits of Base"""
         filename = cls.__name__ + ".json"
         with open(filename, "w") as jsonfile:
             if list_objs is None:
@@ -71,3 +70,15 @@ class Base:
                 new = cls(1)
             new.update(**dictionary)
             return (new)
+    """class method that returns a list of instances"""
+    @classmethod
+    def load_from_file(cls):
+        """Args
+        cls - decorator"""
+        filename = str(cls.__name__) + ".json"
+        try:
+            with open(filename, "r") as jsonfile:
+                my_list = Base.from_json_string(jsonfile.read())
+                return [cls.create(**d) for d in my_list]
+        except IOError:
+            return []

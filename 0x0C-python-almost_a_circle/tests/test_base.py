@@ -29,6 +29,7 @@ class Test_to_json_string(unittest.TestCase):
 
 class testSaveToFile(unittest.TestCase):
     """tests the instances saved in a file"""
+
     def test_save_to_file(self):
         r = Rectangle(10, 7, 2, 8)
         Rectangle.save_to_file([r])
