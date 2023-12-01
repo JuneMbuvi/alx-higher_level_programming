@@ -13,14 +13,14 @@ if __name__ == "__main__":
 
     data = {'q': q}
     url = "http://0.0.0.0:5000/search_user"
-
     try:
-        r = requests.get(url, data=data)
+        r = requests.post(url, data=data)
         r.raise_for_status()
 
-        js_data = r.json()
-        if js_data:
-            print("[{}] {}".format(js_data['id'], js_data['name']))
+        j_data = r.json()
+
+        if j_data:
+            print("[{}] {}".format(j_data['id'], j_data['name']))
         else:
             print("No result")
     except requests.exceptions.HTTPError as e:
