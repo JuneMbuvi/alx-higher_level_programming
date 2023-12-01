@@ -15,7 +15,7 @@ if __name__ == "__main__":
         content = content.encode('utf-8')
         req = urllib.request.Request(url, content)
         with urllib.request.urlopen(req) as response:
-            body= response.read().decode('utf-8')
+            body = response.read().decode('utf-8')
             print(body)
     except urllib.error.URLError as e:
         print(f"Error: {e.reason}")
